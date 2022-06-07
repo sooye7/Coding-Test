@@ -32,9 +32,29 @@ public class MoreSpicy {
         return answer;
     }
 
+    public static int solution2(int[] scoville, int K) {
+        int answer = 0;
+        Queue<Integer> pq = new PriorityQueue<>();
+        int firstScov, secondScov, newScov;
+        for (int s : scoville)
+            pq.offer(s);
+
+            while (pq.size() > 1 && pq.peek() < K) {
+                firstScov = pq.poll();
+                secondScov = pq.poll();
+                newScov = firstScov + 2 * secondScov;
+                pq.offer(newScov);
+                answer++;
+        }
+            if (pq.size() == 1 && pq.peek() < K)
+                answer = -1;
+
+        return answer;
+    }
+
     public static void main(String[] args) {
-        int[] scovile={1, 2, 3, 9, 10, 12};
-        System.out.println(solution(scovile,7));
+        int[] scoville={1, 2, 3, 9, 10, 12};
+        System.out.println(solution(scoville,7));
 
     }
 }
