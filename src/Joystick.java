@@ -3,6 +3,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Joystick {
+    // 40점 풀이
     public static int solution(String name) {
         int answer = 0;
         int cnt=0,reverseCnt=0;
@@ -45,10 +46,30 @@ public class Joystick {
         return answer;
     }
 
+    // 알파벳 개수 26개
+    public static int solution2(String name) {
+        int answer = 0;
+        int move = name.length() - 1; // 오른쪽으로 쭉 간 횟수
+
+        for(int i = 0; i < name.length(); i++) {
+            answer += Math.min(name.charAt(i) - 'A', 26 - (name.charAt(i) - 'A')); //상,하 알파벳 맞추기
+            if (i < name.length() - 1 && name.charAt(i + 1) == 'A') {
+                int endA = i + 1;
+                while(endA < name.length() && name.charAt(endA) == 'A')
+                    endA++;
+                move = Math.min(move, i * 2 + (name.length() - endA));// 오른쪽으로 갔다 다시 왼쪽으로 (오른쪽으로 갔다가 왼쪽으로 가야하므로 처음부터 A를 만날 때까지 i의 2배 + 마지막 A와 끝까지 길이)
+                move = Math.min(move, i + (name.length() - endA) * 2);// 왼쪽으로 갔다 다시 오른쪽으로
+            }
+        }
+        return answer + move;
+    }
+
+
+
     public static void main(String[] args) {
         String name="JEROEN";
         int answer=solution(name);
         System.out.println(answer);
-
+        solution2("J");
     }
 }
