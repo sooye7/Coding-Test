@@ -1,3 +1,4 @@
+import java.util.Locale;
 
 public class StrangeString {
     public static String solution(String s) {
@@ -21,7 +22,52 @@ public class StrangeString {
         return answer;
     }
 
+    public static String solution2(String s) {
+        String answer = "";
+        StringBuilder sb=new StringBuilder();
+        String[] arr=s.trim().split(" ");
+        for(String str:arr){
+            String temp=str.trim();
+            for(int i=0;i<str.length();i++){
+                if(i%2==0)
+                    sb.append(str.substring(i,i+1).toUpperCase());
+                else
+                    sb.append(str.substring(i,i+1).toLowerCase());
+
+            }
+            sb.append(" ");
+        }
+
+        answer=sb.toString().substring(0,sb.length()-1);
+
+        return answer;
+    }
+
+    // 정답 풀이
+    public static String solution3(String s) {
+        String answer = "";
+        int count=0;
+        StringBuilder sb=new StringBuilder();
+
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)==' '){
+                count=0;
+                sb.append(" ");
+            }
+            else{
+                if(count%2==0)
+                    sb.append(s.substring(i,i+1).toUpperCase());
+                else
+                    sb.append(s.substring(i,i+1).toLowerCase());
+                count++;
+            }
+        }
+        answer=sb.toString();
+        return answer;
+    }
+
     public static void main(String[] args) {
-        System.out.println(solution("try hello world"));
+
+        System.out.println(solution3("try hello world"));
     }
 }
