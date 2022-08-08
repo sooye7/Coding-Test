@@ -41,11 +41,18 @@ public class Compression {
             if(headIdx>=msg.length()-1)
                 break;
             while(list.contains(msg.substring(headIdx,endIdx))){
-                if(endIdx<msg.length())
-                    endIdx++;
+                endIdx++;
+                if(endIdx>msg.length())
+                    break;
             }
-            ansList.add(list.indexOf(msg.substring(headIdx,endIdx-1))+1);
-            list.add(msg.substring(headIdx,endIdx));
+            if(endIdx>msg.length()) {
+                ansList.add(list.indexOf(msg.substring(headIdx))+1);
+                list.add(msg.substring(headIdx));
+            }
+            else{
+                ansList.add(list.indexOf(msg.substring(headIdx,endIdx-1))+1);
+                list.add(msg.substring(headIdx,endIdx));
+            }
             System.out.println(list);
         }
         if(endIdx==msg.length())
