@@ -3,7 +3,6 @@ public class NQueens {
     public static int N;	// 체스판의 크기
     public static int count = 0;
 
-
     public static void nQueen(int depth) {
         if (depth == N) {
             count++;
