@@ -42,6 +42,7 @@ public class SameSumOfQueue {
         return answer;
     }
 
+
     public static int solution2(int[] queue1, int[] queue2) {
         int answer = 0;
         long total=0, half=0;
@@ -80,6 +81,7 @@ public class SameSumOfQueue {
                         break;
                     }
                 }
+
                 int num=list.get(0);
                 list.remove(0);
                 list.add(num);
