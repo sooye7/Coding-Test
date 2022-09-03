@@ -5,8 +5,8 @@ public class MakeBigNum {
 
     public static String solution(String number, int k) {
         String answer = "";
+        boolean[] visited=new boolean[number.length()];
         for(int i=0;i<number.length();i++) {
-            boolean[] visited=new boolean[number.length()];
             dfs(i, number, k, visited, "");
         }
         answer=String.valueOf(max);
@@ -17,22 +17,18 @@ public class MakeBigNum {
 
     // 시간 초과 발생
     public static void dfs(int v,String number, int k, boolean[] visited, String str){
-        //visited[v]=true;
-        //str+=number.substring(v,v+1);
         if(str.length()==number.length()-k){
             max=Math.max(max,Integer.parseInt(str));
             System.out.println(Integer.parseInt(str));
+            return;
         }
-        else if(number.substring(v).length()+str.length()>=number.length()-k){
-            for(int i=v;i<number.length();i++){
-                if(!visited[i]){
-                    visited[i]=true;
-                    str+=number.substring(i,i+1);
-                    System.out.println(str);
-                    dfs(v,number,k,visited,str);
-                    visited[i]=false;
-
-                }
+        for(int i=v;i<number.length();i++){
+            if(!visited[i]) {
+                visited[i] = true;
+                str += number.substring(i, i + 1);
+                System.out.println(str);
+                dfs(v, number, k, visited, str);
+                visited[i] = false;
             }
         }
     }
