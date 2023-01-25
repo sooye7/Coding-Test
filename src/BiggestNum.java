@@ -11,23 +11,10 @@ public class BiggestNum {
         Arrays.sort(nums, new Comparator<String>() {
             @Override
             public int compare(String o1, String o2) {
-                if(o2.charAt(0)==o1.charAt(0)) {
-                    for (int i = 0; i < Math.max(o1.length(), o2.length()); i++) {
-                        if (i > o1.length()) {
-                            if (o2.charAt(i) != o1.charAt(o1.length() - 1))
-                                return o2.charAt(i) - o1.charAt(o1.length() - 1);
-                        }
-                        else if (i > o2.length()) {
-                            if (o2.charAt(o2.length() - 1) != o1.charAt(i))
-                                return o2.charAt(o2.length() - 1) - o1.charAt(i);
-                        }
-                        else if (o2.charAt(i) != o1.charAt(i))
-                            return o2.charAt(i) - o1.charAt(i);
-                    }
-                }
-                return o2.charAt(0)-o1.charAt(0);
+               return (o2+o1).compareTo(o1+o2);
             }
         });
+        if(nums[0].equals("0")) return "0";
         StringBuilder sb=new StringBuilder();
         for(String n:nums)
             sb.append(n);
