@@ -13,7 +13,7 @@ public class ArcheryContest {
         if(depth==n){
             int apeachCnt=0;
             int lionCnt=0;
-            for(int i=0;i<=10;i++){
+            for(int i=0;i<=10;i++) {
                 if(info[i]!=0||lion[i]!=0){
                     if(info[i]<lion[i])
                         lionCnt+=10-i;
