@@ -2,23 +2,25 @@
 import java.util.*;
 
 public class MenuRenewal {
+    // 최대 조건 만족 X
     public static String[] solution(String[] orders, int[] course) {
         //String[] answer={};
         List<String> list=new ArrayList<>();
         List<Integer> len=new ArrayList<>();
+        //Map<String, Integer> map=new HashMap<>();
         for(int i:course)
             len.add(i);
 
         for(int i=0;i<orders.length;i++){
             for(int j=i+1;j<orders.length;j++){
-                String str="";
+                StringBuilder str=new StringBuilder();
                 for(int k=0;k<orders[j].length();k++){
                     if(orders[i].contains(orders[j].substring(k,k+1))) {
-                        str += orders[j].substring(k,k+1);
+                        str.append(orders[j].charAt(k));
                     }
                 }
-                if(!list.contains(str))
-                    list.add(str);
+                if(!list.contains(str.toString()))
+                    list.add(str.toString());
             }
         }
 
