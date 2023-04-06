@@ -31,7 +31,7 @@ class Minerals {
             int total=0;
             int count=0;
             int n=0;
-            for(int k=0;k<minerals.length;k++){
+            for(int k=0;k<minerals.length&&n<arr.length;k++){
                 int index=0;
                 if(minerals[k].equals("diamond"))
                     index=0;
@@ -40,10 +40,8 @@ class Minerals {
                 else
                     index=2;
                 total+=fatigue[arr[n]][index];
-                System.out.println("f"+fatigue[arr[n]][index]);
-                System.out.println(total);
                 count++;
-                if(count>5){
+                if(count>=5){
                     n++;
                     count=0;
                 }
